@@ -24,7 +24,7 @@ async function bootstrap() {
   
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document, {
-    customCss: CSS_URL,
+    customCssUrl: CSS_URL,
   });
 
   
