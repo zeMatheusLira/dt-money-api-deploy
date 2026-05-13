@@ -1,17 +1,12 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PrismaTransactionRepository } from './modules/transactions/infra/repositories/prisma/prisma.transaction.repository';
-import { ITransactionRepository } from './modules/transactions/infra/repositories/transaction.repository.abstract';
-import { PrismaService } from './shared/prisma.service';
 import { TransactionsModule } from './modules/transactions/transactions.module';
+import { UsersModule } from './modules/users/users.module';
 
 @Module({
-  imports: [TransactionsModule],
+  imports: [TransactionsModule, UsersModule],
   controllers: [AppController],
-  providers: [AppService, PrismaService, {
-    provide: ITransactionRepository,
-    useClass: PrismaTransactionRepository
-  }],
+  providers: [AppService],
 })
 export class AppModule {}
